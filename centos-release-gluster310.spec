@@ -11,10 +11,12 @@ BuildArch: noarch
 # This provides the public key to verify the RPMs
 Requires: centos-release-storage-common
 
-# Provides only, no Obsoletes or Conflicts because it should not automatically
-# replace previous centos-release-gluster* packages. Also, tools from older
-# repositories should still be able to work with the new version.
 Provides: centos-release-gluster = 3.10
+
+# Obsoletes: for 3.9 only, 3.9 is EOL when 3.10 is released
+Obsoletes: centos-release-gluster39
+# No Conflicts:, possibly older repositories contain additional tools and those
+# are still expected to be working.
 
 %description
 yum configuration for Gluster 3.10 packages from the CentOS Storage SIG.
